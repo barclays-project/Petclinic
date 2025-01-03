@@ -75,7 +75,10 @@
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
         <jacoco-maven-plugin>0.8.6</jacoco-maven-plugin>
-
+        <!-- Sonar Server Deatils -->
+        <sonar.host.url>https://sonarcloud.io/</sonar.host.url>
+        <sonar.login>a225535082b7d832f4a1174072dd278ba5dfa1e2</sonar.login>
+        <sonar.organization>barclays-org-man</sonar.organization> 
         <!-- Docker image -->
         <docker.jib-maven-plugin.version>2.6.0</docker.jib-maven-plugin.version>
         <docker.image.prefix>springcommunity</docker.image.prefix>
@@ -290,7 +293,18 @@
         </dependency>
 
     </dependencies>
-
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+	    <name>petclinic-Release-Nexus-Repo</name>
+            <url>http://13.235.114.126:8081/repository/petclinic-release/</url>
+        </repository>
+	    <snapshotRepository>
+            <id>nexus</id>
+	    <name>petclinic-snapshot-Nexus-Repo</name>
+            <url>http://13.235.114.126:8081/repository/petclinic-snapshot/</url>
+        </snapshotRepository>
+     </distributionManagement>
     <!-- Maven plugin versions are mentioned in order to guarantee the build reproducibility in the long term -->
     <build>
         <defaultGoal>install</defaultGoal>
