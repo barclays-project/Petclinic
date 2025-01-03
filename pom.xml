@@ -26,7 +26,7 @@
         <spring-framework.version>5.3.18</spring-framework.version>
 
         <!-- Web dependencies -->
-        <!-- Version update should also be done in wro.xml, petclinic.less and static resources: htmlHeader.tag and footer.tag-->
+        <!-- Versions update should also be done in wro.xml, petclinic.less and static resources: htmlHeader.tag and footer.tag-->
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
         <webjars-jquery-ui.version>1.12.1</webjars-jquery-ui.version>
         <webjars-jquery.version>3.5.1</webjars-jquery.version>
@@ -297,12 +297,12 @@
         <repository>
             <id>nexus</id>
 	    <name>petclinic-Release-Nexus-Repo</name>
-            <url>http://13.235.114.126:8081/repository/petclinic-release/</url>
+            <url>http://13.232.96.179:8081/repository/petclinic-release/</url>
         </repository>
 	    <snapshotRepository>
             <id>nexus</id>
 	    <name>petclinic-snapshot-Nexus-Repo</name>
-            <url>http://13.235.114.126:8081/repository/petclinic-snapshot/</url>
+            <url>http://13.232.96.179:8081/repository/petclinic-snapshot/</url>
         </snapshotRepository>
      </distributionManagement>
     <!-- Maven plugin versions are mentioned in order to guarantee the build reproducibility in the long term -->
