@@ -1,0 +1,24 @@
+node {
+echo "Bulid number: $BUILD_NUMBER"
+def mavenHome = tool name: 'maven3.9.9'
+    stage('checkout code'){
+        git branch: 'qatesting', credentialsId: 'git-creds', url: 'https://github.com/barclays-project/Petclinic.git'
+    }
+
+    stage('Build Artifact'){
+        sh "${mavenHome}/bin/mvn clean package"
+    }
+    
+    stage('CodeQuality Check'){
+        sh "${mavenHome}/bin/mvn sonar:sonar"
+    }
+    stage('Add to nexus repo'){
+        sh "${mavenHome}/bin/mvn deploy"
+    } 
+    stage('deploy to tomcat'){
+        sshagent(['363947b0-c681-44a1-85bd-09f64b72d3d9']) {
+            sh "scp -o StrictHostKeyChecking=no target/petclinic.war ec2-user@65.1.148.40:/opt/apache-tomcat-9.0.98/webapps/"
+        }
+        
+    }
+}
