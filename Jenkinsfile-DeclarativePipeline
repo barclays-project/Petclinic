@@ -21,7 +21,7 @@ triggers {
 stages{
 	stage('checkoutcode'){
 	steps{
-  		git branch: 'main', credentialsId: 'git-creds', url: 'https://github.com/barclays-project/Petclinic.git'
+  		git branch: '${branchname}', credentialsId: 'git-creds', url: 'https://github.com/barclays-project/Petclinic.git'
   	  }
 	}
 	stage('Build'){
