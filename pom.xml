@@ -297,12 +297,12 @@
         <repository>
             <id>nexus</id>
 	    <name>petclinic-Release-Nexus-Repo</name>
-            <url>http://13.232.198.87:8081/repository/petclinic-declarative-pipeline/</url>
+            <url>http://65.2.176.204:8081/repository/petclinic-declarative-pipeline/</url>
         </repository>
 	    <snapshotRepository>
             <id>nexus</id>
 	    <name>petclinic-snapshot-Nexus-Repo</name>
-            <url>http://13.232.198.87:8081/repository/petclinic-snapshot/</url>
+            <url>http://65.2.176.204:8081/repository/petclinic-snapshot/</url>
         </snapshotRepository>
      </distributionManagement>
     <!-- Maven plugin versions are mentioned in order to guarantee the build reproducibility in the long term -->
