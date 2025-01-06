@@ -41,11 +41,10 @@ stages{
 //	}
 	stage('Deply on Tomcat Server'){
   	steps{
-  		sshagent(['363947b0-c681-44a1-85bd-09f64b72d3d9']) {
-	  		sh "scp -o StrictHostKeyChecking=no ec2-user@43.204.98.195:/opt/apache-tomcat-9.0.98/webapps/"
-
-  		}
-  	  }
+  	sshagent(['363947b0-c681-44a1-85bd-09f64b72d3d9']) {
+		sh "scp -o StrictHostKeyChecking=no target/petclinic.war ec2-user@43.204.98.195:/opt/apache-tomcat-9.0.98/webapps/"
+  	}
+  	}
 	}
 }
 }
