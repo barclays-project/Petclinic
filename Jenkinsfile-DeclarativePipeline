@@ -3,13 +3,19 @@ pipeline{
 agent {
   label 'built-in'
 }
-properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '3')), pipelineTriggers([githubPush()])])
+options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '2')
+  timestamps()
+}
 parameters {
   choice choices: ['main', 'dev', 'qatesting'], name: 'branchname'
 }
 
 tools {
   maven 'maven3.9.9'
+}
+triggers {
+  githubPush()
 }
 
 stages{
