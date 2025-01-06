@@ -5,7 +5,7 @@ agent {
 }
 options {
   buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '2')
-  timestamps
+  timestamps()
 }
 parameters {
   choice choices: ['main', 'dev', 'qatesting'], name: 'branchname'
