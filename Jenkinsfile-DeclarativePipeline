@@ -7,7 +7,9 @@ options {
   buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '2')
   timestamps
 }
-
+parameters {
+  choice choices: ['main', 'dev', 'qatesting'], name: 'branchname'
+}
 
 tools {
   maven 'maven3.9.9'
@@ -20,30 +22,30 @@ stages{
 	stage('checkoutcode'){
 	  steps{
   		git branch: 'main', credentialsId: 'git-creds', url: 'https://github.com/barclays-project/Petclinic.git'
-  	}
+  	  }
 	}
 	stage('Build'){
-  	steps{
+  	  steps{
   		mvn clean package
-  	}
+  	  }
 	}
 	stage('Execute sonar report'){
-  	steps{
+  	  steps{
   		mvn sonar:sonar
-  	}
+ 	  }
 	}
 	stage('Artifacts to nexus Repo'){
-  	steps{
+  	  steps{
   		mvn deploy
-  	}
+  	 }
 	}
 	stage('Deply on Tomcat Server'){
-  	steps{
+  	  steps{
   		sshagent(['363947b0-c681-44a1-85bd-09f64b72d3d9']) {
 	  		scp -o StrictHostKeyChecking=no ec2-user@43.204.98.195:/opt/apache-tomcat-9.0.98/webapps/
 
   		}
-  	}
+  	  }
 	}
 }
 
