@@ -34,11 +34,11 @@ stages{
   		sh "mvn sonar:sonar"
  	  }
 	}
-/*	stage('Artifacts to nexus Repo'){
-  	steps{
-  		sh "mvn deploy"
-  	 }
-*/	}
+// stage('Artifacts to nexus Repo'){
+//	steps{
+//		sh "mvn deploy"
+//      }
+//	}
 	stage('Deply on Tomcat Server'){
   	steps{
   		sshagent(['363947b0-c681-44a1-85bd-09f64b72d3d9']) {
@@ -48,5 +48,4 @@ stages{
   	  }
 	}
 }
-
 }
